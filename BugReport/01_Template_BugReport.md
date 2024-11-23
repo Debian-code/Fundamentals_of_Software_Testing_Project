@@ -1,6 +1,5 @@
-
 ## Summary (Summarize the bug encountered concisely)
-     
+
      Bug description helps the developer to understand the bug. It describes the problem encountered.
 
 ## Steps to reproduce
@@ -25,8 +24,8 @@
 
 ## Whom do you report/ Assign To/ Tags
 
-      /label ~bug ~reproduced ~needs-investigation 
-      /cc @project-manager 
+      /label ~bug ~reproduced ~needs-investigation
+      /cc @project-manager
       /assign @qa-tester
 
 ## Priority

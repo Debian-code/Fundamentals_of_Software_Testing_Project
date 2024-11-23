@@ -6,9 +6,9 @@ Documentation	Issue Test scenario. CRUD Operation: Create, Read, Update, Delete
 
 # TODO: Write Precondition and Postcondition, Tags 
 
-Pre Condition	Tips: Project must be created by the user before 
-Post Condition	
-Tags
+Pre Condition	 A valid user must be logged in, project "FirstProject" must existTips: Project must be created by the user before 
+Post Condition	Close all browser instances after test execution
+Tags Tags    SmokeTest    CRUDTest
 
 #******************* Common Variables ********************
 

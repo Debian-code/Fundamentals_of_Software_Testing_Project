@@ -1,44 +1,87 @@
-
 #******************** Settings ************************
 
 *** Settings ***
 
-# TODO: Write Dcocumentation e.g. Project Test scenario. CRUD Operation: Create, Read, Update, Delete
+Documentation    Project Test Scenario: CRUD Operation - Create, Read, Update, Delete
 
-Documentation	
-
-# TODO: Write Precondition, Postcondition, Tags
-
-Pre Condition	 
-Post Condition	
-Tags
+Precondition     Open Browser and navigate to ${project_page_url}
+Postcondition    Close all browser instances after test execution
+Tags             Creating Project, TS-1-create_project
 
 #******************* Common Variables ********************
 
 *** Variables ***
 
-# NOTE: Please Remove your login credential before uploading Assignments
+# NOTE: Please Remove your login credentials before uploading Assignments
 
-# TODO: Write Project creation field variables
-
-
+project_page_url =https://gitlab.com/
+valid_project_name =First_Project
+valid_project_name2 = First_Project2
+updated_project_name = Updated_Project
+duplicate_project_name = First_Project
+template_project_name = Template_Project
+imported_project_name = Imported_Name
+success_message = Project '${valid_project_name}' was successfully created.
+error_message = A project with this name already exists.
 
 #******************** Test Cases *************************
 
-*** Test Case ***
+*** Test Cases ***
 
-# TODO: Write Positive and Negative Test Cases and Test Process steps
+# Positive Test: Create a Blank Project
+Create Blank Project
+   Test creating a blank project with a valid name.
+    Open Browser project_page_url    
+    Click Button on the left corner with a plus inside 
+	Click Button New Project/deposit
+	Click Button Create an empty project
+    Input Project Name valid_project_name
+    Click Button    create project
+    Verify url https://gitlab.com/test3825847/valid_project_name
+    Close Browser
 
-# Positive Test examples are below write test process steps for each below test case
+# Positive Test: Create a Template Project
+Create Template Project
+   Test creating a template project with a valid name.
+    Open Browser project_page_url    
+    Click Button on the left corner with a plus inside 
+	Click Button New Project/deposit
+	Click Button Create from template
+	Select a template by clicking on Button use this template
+    Input Project Name template_project_name
+    Click Button    create project
+    Verify url https://gitlab.com/test3825847/template_project_name
+    Close Browser
 
-	Create blank project
-	Create template project 
-	Update name of template project
-	Delete template project
-	Valide that message is showing Project 'First project ' was successfully created.
+# Positive Test: Update Name of Template Project
+Update Name of Template Project
+    Test updating the name of a template project.
+    Open Browser and navigate to project_page_url
+    Click Button project template_project_nam
+    Click Button    edit_project_name_button
+	Click Button with the 3 vertical dots on the right corner
+	Click  Button Settings of the Project
+	Input Text Name of the project udated_project_name 
+    Click button Save modification
+    Close Browser
 
-# Negative Test examples are below write test process steps for each below test case
+# Positive Test: Delete Template Project
+Delete Template Project
+    Test deleting a project.
+    Open Browser and navigate to project_page_url
+    Navigate to the project updated_project_name
+	Click Button with the 3 vertical dots on the right corner
+    Click Button    Leave the project
+    Close Browser
 
-	Create a blank project with the previous same name
-
-
+# Negative Test: Create a Blank Project with a Duplicate Name
+Create Blank Project With Duplicate Name
+	 Test creating a blank project with a name that already exists.
+    Open Browser and navigate to project_page_url
+  	Click Button on the left corner with a plus inside 
+	Click Button New Project/deposit
+	Click Button Create an empty project
+    Input Project Name valid_project_name
+    Click Button    create project
+	Error message should show up Name is already in use , Name is already in use, Path is already in use
+    Close Browser
